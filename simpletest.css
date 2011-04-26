@@ -1,0 +1,6 @@
+.SimpleTestHeader {}
+.SimpleTestSummary { padding: 8px; margin-top: 1em; color: white; }
+.failBarColor { background-color: red; }
+.passBarColor { background-color: green; }
+.fail { color: red; }
+.pass { color: green; }
