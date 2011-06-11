@@ -1,30 +1,32 @@
 <?php
 
-
+// the simpleTest class files names don't match the class names,
+// so we can't use the autoloader
+require_once('simpletest/unit_tester.php');
+require_once('simpletest/reporter.php');
+require_once('simpletest/mock_objects.php');
 
 class WpSimpleTest {
     private $version = '1.0';
     private $cssFileName = 'simpletest.css';
     private $functionsFacade;
-    private $hooksFacade;
     private $shortcodeDefaults = array(
         'name' => 'Test Results',
         'path' => '',
         'passes' => '');
     private $fullTestFilePath;
 
-    function __construct(&$functionsFacade, &$hooksFacade) {
+    function __construct(ToppaFunctionsFacade &$functionsFacade) {
         $this->functionsFacade = $functionsFacade;
-        $this->hooksFacade = $hooksFacade;
     }
 
     public function run() {
         $cssUrl = $this->functionsFacade->getUrlForCustomizableFile($this->cssFileName, __FILE__);
-        $this->hooksFacade->enqueueStylesheet('simpletest_css', $cssUrl, $this->version);
-        $this->hooksFacade->addShortcode('simpletest', array($this, 'handleShortcode'));
+        wp_enqueue_style('simpletest_css', $cssUrl, false, $this->version);
+        add_shortcode('simpletest', array($this, 'handleShortcode'));
     }
 
-    public function handleShortcode($userShortcode) {
+    public function handleShortcode(array $userShortcode) {
         try {
             array_walk($userShortcode, array('ToppaFunctions', 'trimCallback'));
             $this->setShortcode($userShortcode);
@@ -41,7 +43,7 @@ class WpSimpleTest {
         return $testResults;
     }
 
-    public function setShortcode($userShortcode) {
+    public function setShortcode(array $userShortcode) {
         $this->shortcode = array_merge($this->shortcodeDefaults, $userShortcode);
         return true;
     }
@@ -67,7 +69,7 @@ class WpSimpleTest {
         return true;
     }
 
-    public function runTests($groupTest, $reporter) {
+    public function runTests(GroupTest $groupTest, WpSimpleTestReporter $reporter) {
         ob_start();
         $groupTest->addTestFile($this->fullTestFilePath);
         $groupTest->run($reporter);

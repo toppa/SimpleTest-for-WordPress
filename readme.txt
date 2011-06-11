@@ -15,7 +15,7 @@ SimpleTest for WordPress is a tool for WordPress plugin developers who want to c
 
 Usage is simple. Create a page or post where you want to display test results (you'll probably want to make this a private page). Then add a shortcode like this:
 
-[simpletest name="SimpleTest Unit Tests" path="/wp-simpletest/tests/UnitTestOfWpSimpleTest.php" passes="y"]
+[simpletest name="SimpleTest Unit Tests" path="/wp-simpletest/tests/UnitWpSimpleTest.php" passes="y"]
 
 * name (optional): an optional name to show as a header in the test results
 * path (required): the path to your tests file, written for use with SimpleTest.
@@ -25,9 +25,9 @@ A css file is included for styling the test output results, if for some reason y
 
 **Applying Agile Coding Practices to WordPress Plugin Development**
 
-The example shortcode above will work. It runs the unit tests I wrote for the plugin itself. I also included integration tests. Test coverage is limited however, given inherent limitations of testing the test harness itself. The differences between the unit tests and integration tests are that the unit tests use mock versions of the plugin's external dependencies (on WordPress and the filesystem), and the integration tests run against the actual dependencies. The former tell you if your plugin's internal logic is correct, the latter tell you if there are any problems interfacing with external dependencies. Don't write dirty hybrids that mix the two! Then it's hard to even tell what you're really testing.
+The example shortcode above will work. It runs the unit tests I wrote for the plugin itself. I also included integration tests. Test coverage is limited however, given inherent limitations of testing the test harness itself. The differences between the unit tests and integration tests are that the unit tests use mock versions of the plugin's external dependencies (on WordPress functions and the filesystem), and the integration tests run against the actual dependencies. The former tell you if your plugin's internal logic is correct, the latter tell you if there are any problems interfacing with external dependencies. Don't write dirty hybrids that mix the two! Then it's hard to even tell what you're really testing.
 
-I made a mockery of WordPress (pun courtesy of Steve Freeman) by creating a WpFacade class, which you can also use with your plugin development. WordPress functions and hooks are wrapped into methods in WpFacade (and I gave them more meaningful names). It also provides enhanced functionality for tasks such as creating database tables. Currently coverage of WordPress functionality is very limited, but will grow as WpFacade is used in more places. Using WpFacade makes it easier to unit test your plugins, and will drive de-coupling of your code as you develop it, if you do test driven development. Avoiding direct dependencies on WordPress' custom functions can also make it easier to port your plugins to other CMS.
+I made a mockery of WordPress (pun courtesy of Steve Freeman) by creating a facade for WordPress functions (ToppaWpFunctionsFacade), which you can also use with your plugin development. WordPress custom functions are wrapped into methods. It also provides enhanced functionality for some common WordPress tasks. Avoiding direct dependencies on WordPress' custom functions can make it easier for your plugin to be used outside of WordPress.
 
 == Installation ==
 
