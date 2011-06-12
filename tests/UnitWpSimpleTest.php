@@ -1,9 +1,9 @@
 <?php
 
 require_once(dirname(__FILE__) . '/../../toppa-libs/ToppaFunctions.php');
-require_once(dirname(__FILE__) . '/../../toppa-libs/ToppaWpFunctionsFacade.php');
+require_once(dirname(__FILE__) . '/../../toppa-libs/ToppaFunctionsFacadeWp.php');
 require_once(dirname(__FILE__) . '/../WpSimpleTest.php');
-Mock::generate('ToppaWpFunctionsFacade');
+Mock::generate('ToppaFunctionsFacadeWp');
 
 class UnitWpSimpleTest extends UnitTestCase {
     private $functionsFacade;
@@ -16,7 +16,7 @@ class UnitWpSimpleTest extends UnitTestCase {
     }
 
     public function setUp() {
-        $this->functionsFacade = new MockToppaWpFunctionsFacade();
+        $this->functionsFacade = new MockToppaFunctionsFacadeWp();
         $this->functionsFacade->setReturnValue('getPluginsPath', '/opt/lampp/htdocs/wordpress/wp-content/plugins');
     }
 

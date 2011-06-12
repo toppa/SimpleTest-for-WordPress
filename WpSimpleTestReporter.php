@@ -9,17 +9,26 @@ class WpSimpleTestReporter extends HtmlReporter {
 
     function paintHeader($test_name) {
         print "<h3 class=\"SimpleTestHeader\">$test_name</h3>\n";
+        print "<div class=\"SimpleTest\">\n";
         flush();
     }
 
     function paintFooter($test_name) {
-        $resultBarColor = ($this->getFailCount() + $this->getExceptionCount() > 0 ? "failBarColor" : "passBarColor");
+        if ($this->getFailCount() + $this->getExceptionCount() > 0) {
+            $resultBarColor = "SimpleTestFailBarColor";
+        }
+
+        else {
+            $resultBarColor = "SimpleTestPassBarColor";
+
+        }
         print "<div class=\"SimpleTestSummary $resultBarColor\">";
         print $this->getTestCaseProgress() . "/" . $this->getTestCaseCount();
         print " test cases complete:\n";
         print "<strong>" . $this->getPassCount() . "</strong> passes, ";
         print "<strong>" . $this->getFailCount() . "</strong> fails and ";
         print "<strong>" . $this->getExceptionCount() . "</strong> exceptions.";
+        print "</div>\n";
         print "</div>\n";
     }
 

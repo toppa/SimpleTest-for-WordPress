@@ -1,6 +1,32 @@
+.SimpleTest {
+    white-space: nowrap;
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #eeeeee;
+    font-family: "Courier New",Courier,monospace;
+    margin-bottom: 22px;
+    overflow: auto;
+    padding: 11px;
+}
 .SimpleTestHeader {}
-.SimpleTestSummary { padding: 8px; margin-top: 1em; color: white; }
-.failBarColor { background-color: red; }
-.passBarColor { background-color: green; }
-.fail { color: red; }
-.pass { color: green; }
+
+.SimpleTestSummary {
+    padding: 8px;
+    margin-top: 1em;
+    color: white;
+}
+
+.SimpleTestFailBarColor {
+    background-color: red;
+}
+
+.SimpleTestPassBarColor {
+    background-color: green;
+}
+
+.fail {
+    color: red;
+}
+
+.pass {
+    color: green;
+}
