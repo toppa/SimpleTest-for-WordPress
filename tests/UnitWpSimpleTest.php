@@ -1,7 +1,7 @@
 <?php
 
-require_once(dirname(__FILE__) . '/../../toppa-libs/ToppaFunctions.php');
-require_once(dirname(__FILE__) . '/../../toppa-libs/ToppaFunctionsFacadeWp.php');
+require_once(dirname(__FILE__) . '/../../toppa-plugin-libraries-for-wordpress/ToppaFunctions.php');
+require_once(dirname(__FILE__) . '/../../toppa-plugin-libraries-for-wordpress/ToppaFunctionsFacadeWp.php');
 require_once(dirname(__FILE__) . '/../WpSimpleTest.php');
 Mock::generate('ToppaFunctionsFacadeWp');
 

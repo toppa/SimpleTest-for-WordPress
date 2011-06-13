@@ -1,5 +1,14 @@
-You must also download the toppa-libs project to use this.
+IMPORTANT: When downloading from GitHub, rename the folder to
+simpletest-for-wordpress before uploading to your WordPress
+plugin directory.
 
-Please see readme.txt for all other information.
+GitHub contains the latest revisions of code for this project, which may
+not always be thoroughly tested.
 
-(the WordPress repository wants a readme.txt, github wanta a README....)
+Official releases are provided at the WordPress plugin repository:
+http://wordpress.org/extend/plugins/simpletest-for-wordpress/
+
+Please see readme.txt for additional information
+
+(GitHub wants a README, the WordPress plugin repository wants a
+readme.txt...)

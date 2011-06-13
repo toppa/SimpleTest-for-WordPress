@@ -2,7 +2,7 @@
 
 // the autoloader can be used with tests only if you don't need SimpleTest's mocks for your tests
 // so it's good for integration tests
-require_once(dirname(__FILE__) . '/../../toppa-libs/ToppaWpAutoLoader.php');
+require_once(dirname(__FILE__) . '/../../toppa-plugin-libraries-for-wordpress/ToppaAutoLoaderWp.php');
 
 class IntegrationTestOfWpSimpleTest extends UnitTestCase {
     private $functionsFacade;
@@ -10,16 +10,16 @@ class IntegrationTestOfWpSimpleTest extends UnitTestCase {
     private $wpSimpleTestAutoLoader;
     private $shortcodeNoPath = array('name' => 'Test Results', 'path' => '', 'passes' => 'n');
     private $shortcodeBadPath = array('path' => '/nowhere');
-    private $shortcodeGoodPath = array('name' => 'Wp Simpletest', 'path' => '/wp-simpletest/tests', 'passes' => 'y');
+    private $shortcodeGoodPath = array('name' => 'Wp Simpletest', 'path' => '/simpletest-for-wordpress/tests', 'passes' => 'y');
 
     public function __construct() {
         $this->UnitTestCase();
     }
 
     public function setUp() {
-        $this->toppaAutoLoader = new ToppaWpAutoLoader('/toppa-libs');
-        $this->wpSimpleTestAutoLoader = new ToppaWpAutoLoader('/wp-simpletest');
-        $this->functionsFacade = new ToppaWpFunctionsFacade();
+        $this->toppaAutoLoader = new ToppaAutoLoaderWp('/toppa-plugin-libraries-for-wordpress');
+        $this->wpSimpleTestAutoLoader = new ToppaAutoLoaderWp('/simpletest-for-wordpress');
+        $this->functionsFacade = new ToppaFunctionsFacadeWp();
     }
 
     public function testSetShortcodeWithNoPath() {
@@ -38,7 +38,7 @@ class IntegrationTestOfWpSimpleTest extends UnitTestCase {
 
     public function testSetShortcodeWithGoodPath() {
         $wpSimpleTest = new WpSimpleTest($this->functionsFacade);
-        $expectedShortcodeGoodPath = array('name' => 'Wp Simpletest', 'path' => '/wp-simpletest/tests', 'passes' => 'y');
+        $expectedShortcodeGoodPath = array('name' => 'Wp Simpletest', 'path' => '/simpletest-for-wordpress/tests', 'passes' => 'y');
         $wpSimpleTest->setShortcode($this->shortcodeGoodPath);
         $this->assertEqual($expectedShortcodeGoodPath, $wpSimpleTest->getShortcode());
     }
