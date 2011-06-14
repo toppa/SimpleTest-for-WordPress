@@ -1,5 +1,6 @@
 === SimpleTest for WordPress ===
 Contributors: Mike Toppa
+Donate link: http://www.toppa.com/simpletest-for-wordpress/
 Tags: unit test, integration test, plugin testing, testing, test, TDD, SimpleTest
 Requires at least: 3.0
 Tested up to: 3.0
@@ -13,7 +14,7 @@ Enables unit testing and integration testing for WordPress plugins, using Simple
 
 SimpleTest for WordPress is a tool for WordPress plugin developers who want to create and run automated tests for their plugins. It includes [SimpleTest 1.0.1](http://www.simpletest.org/) and uses a shortcode to let you run unit tests on WordPress plugins, and see the results in a WordPress page. Since it runs within WordPress, you can also do integration testing of plugins (that is, custom WordPress functions used in the plugins will work correctly when the tests are run).
 
-Installation of [Toppa Libraries for WordPress plugins](http://wordpress.org/extend/plugins/toppa-plugin-libraries-for-wordpress/) is required for this plugin. Please download and install it first.
+**Installation of [Toppa Plugin Libraries for WordPress](http://wordpress.org/extend/plugins/toppa-plugin-libraries-for-wordpress/) is required for this plugin. Please download and install it first.**
 
 Usage is simple. Create a page or post where you want to display test results (you'll probably want to make this a private page). Then add a shortcode like this:
 
@@ -31,8 +32,16 @@ The example shortcode above will work. It runs the unit tests I wrote for the pl
 
 == Installation ==
 
-1. Install [Toppa Libraries for WordPress plugins](http://wordpress.org/extend/plugins/toppa-plugin-libraries-for-wordpress/) in your plugin folder
+1. Install [Toppa Plugin Libraries for WordPress](http://wordpress.org/extend/plugins/toppa-plugin-libraries-for-wordpress/) in your plugin folder
 1. Install SimpleTestForWordPress in your plugin folder and activate. There is no settings menu.
+
+== Frequently Asked Questions ==
+
+* Requires PHP 5.1.2 or higher.
+* See the [SimpleTest for WordPress page on my website](http://www.toppa.com/simpletest-for-wordpress/) for more details and usage examples.
+* For troubleshooting help, please [post a comment in my latest post on WordPress plugins](http://www.toppa.com/category/technical/wordpress-plugins/).
+
+== Screenshots ==
 
 == Changelog ==
 
