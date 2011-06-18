@@ -4,7 +4,7 @@ Donate link: http://www.toppa.com/simpletest-for-wordpress/
 Tags: unit test, integration test, plugin testing, testing, test, TDD, SimpleTest
 Requires at least: 3.0
 Tested up to: 3.0
-Stable tag: 1.0
+Stable tag: 1.0.1
 
 Enables unit testing and integration testing for WordPress plugins, using SimpleTest
 
@@ -16,15 +16,17 @@ SimpleTest for WordPress is a tool for WordPress plugin developers who want to c
 
 **Installation of [Toppa Plugin Libraries for WordPress](http://wordpress.org/extend/plugins/toppa-plugin-libraries-for-wordpress/) is required for this plugin. Please download and install it first.**
 
+The "tests" subdirectory contains real, example unit and integration tests so you can see how tests are written for SimpleTest (it is very similar to PHPUnit, but I find its use of mock objects more straightforward, and since SimpleTest's native output is HTML, it integrates nicely with WordPress).
+
 Usage is simple. Create a page or post where you want to display test results (you'll probably want to make this a private page). Then add a shortcode like this:
 
 [simpletest name="SimpleTest Unit Tests" path="/simpletest-for-wordpress/tests/UnitWpSimpleTest.php" passes="y"]
 
 * name (optional): an optional name to show as a header in the test results
-* path (required): the path to your tests file, written for use with SimpleTest.
+* path (required): the path to your tests file, relative to the base plugin directory, written for use with SimpleTest.
 * passes (optional): "y" or "n" - whether to show passed tests in the output (defaults to n)
 
-A css file is included for styling the test output results, if for some reason you want your pass and fail bars to be colors other than green and red. Copy the css file to your active theme folder and customize to your heart's content.
+A css file is included for styling the test output results. Copy the css file to your active theme folder and customize to your heart's content.
 
 **Applying Agile Coding Practices to WordPress Plugin Development**
 
@@ -43,8 +45,15 @@ The example shortcode above will work. It runs the unit tests I wrote for the pl
 
 == Screenshots ==
 
+1. Sample test output
+
 == Changelog ==
 
 = 1.0 =
 
 * First version
+
+= 1.0.1
+
+* Added activation function, to check all dependencies are met
+* Does not run if dependencies are not met
