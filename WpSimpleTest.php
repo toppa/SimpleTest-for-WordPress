@@ -7,7 +7,7 @@ require_once('simpletest/reporter.php');
 require_once('simpletest/mock_objects.php');
 
 class WpSimpleTest {
-    private $version = '1.0';
+    private $version = '1.0.2';
     private $cssFileName = 'simpletest.css';
     private $functionsFacade;
     private $shortcodeDefaults = array(
