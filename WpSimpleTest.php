@@ -16,7 +16,7 @@ class WpSimpleTest {
         'passes' => '');
     private $fullTestFilePath;
 
-    function __construct(ToppaFunctionsFacade &$functionsFacade) {
+    public function __construct(ToppaFunctionsFacade $functionsFacade) {
         $this->functionsFacade = $functionsFacade;
     }
 
