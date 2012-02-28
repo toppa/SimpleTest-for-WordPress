@@ -21,9 +21,13 @@ class WpSimpleTest {
     }
 
     public function run() {
+        add_action('wp_enqueue_scripts', array($this, 'enqueueStyle'));
+        add_shortcode('simpletest', array($this, 'handleShortcode'));
+    }
+
+    public function enqueueStyle() {
         $cssUrl = $this->functionsFacade->getUrlForCustomizableFile($this->cssFileName, __FILE__);
         wp_enqueue_style('simpletest_css', $cssUrl, false, $this->version);
-        add_shortcode('simpletest', array($this, 'handleShortcode'));
     }
 
     public function handleShortcode(array $userShortcode) {
