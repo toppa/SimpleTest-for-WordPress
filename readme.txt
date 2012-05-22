@@ -3,8 +3,8 @@ Contributors: toppa
 Donate link: http://www.toppa.com/simpletest-for-wordpress/
 Tags: unit test, integration test, plugin testing, testing, test, TDD, SimpleTest
 Requires at least: 3.0
-Tested up to: 3.0
-Stable tag: 1.0.2
+Tested up to: 3.3.2
+Stable tag: 1.1
 
 Enables unit testing and integration testing for WordPress plugins, using SimpleTest
 
@@ -48,6 +48,13 @@ The example shortcode above will work. It runs the unit tests I wrote for the pl
 1. Sample test output
 
 == Changelog ==
+
+= 1.1 =
+* Upgraded the included version of SimpleTest to the current version (1.1.0)
+* Updated WordPress test runner and HTML report to use SimpleTest 1.1.0
+* Check system requirements at admin_init (instead of plugin activation)
+* Improved included sample tests
+
 
 = 1.0.2 =
 * More user friendly handling of activation errors
