@@ -1,18 +1,12 @@
 <?php
 
-require_once(dirname(__FILE__) . '/../../toppa-plugin-libraries-for-wordpress/ToppaFunctions.php');
 require_once(dirname(__FILE__) . '/../../toppa-plugin-libraries-for-wordpress/ToppaFunctionsFacadeWp.php');
-require_once(dirname(__FILE__) . '/../WpSimpleTest.php');
 Mock::generate('ToppaFunctionsFacadeWp');
 
 class UnitWpSimpleTest extends UnitTestCase {
     private $functionsFacade;
-    private $shortcodeNoPath = array('name' => 'Test Results', 'path' => '', 'passes' => 'n');
-    private $shortcodeBadPath = array('path' => '/nowhere');
-    private $shortcodeGoodPath = array('name' => 'Wp Simpletest', 'path' => '/wp-simpletest/tests', 'passes' => 'y');
 
     public function __construct() {
-        $this->UnitTestCase();
     }
 
     public function setUp() {
@@ -23,21 +17,24 @@ class UnitWpSimpleTest extends UnitTestCase {
     public function testSetShortcodeWithNoPath() {
         $wpSimpleTest = new WpSimpleTest($this->functionsFacade);
         $expectedShortcodeNoPath = array('name' => 'Test Results', 'path' => '', 'passes' => 'n');
-        $wpSimpleTest->setShortcode($this->shortcodeNoPath);
+		$shortcodeNoPath = array('name' => 'Test Results', 'path' => '', 'passes' => 'n');
+        $wpSimpleTest->setShortcode($shortcodeNoPath);
         $this->assertEqual($expectedShortcodeNoPath, $wpSimpleTest->getShortcode());
     }
 
     public function testSetShortcodeWithBadPath() {
         $wpSimpleTest = new WpSimpleTest($this->functionsFacade);
         $expectedShortcodeBadPath = array('name' => 'Test Results', 'path' => '/nowhere', 'passes' => '');
-        $wpSimpleTest->setShortcode($this->shortcodeBadPath);
+		$shortcodeBadPath = array('path' => '/nowhere');
+        $wpSimpleTest->setShortcode($shortcodeBadPath);
         $this->assertEqual($expectedShortcodeBadPath, $wpSimpleTest->getShortcode());
     }
 
     public function testSetShortcodeWithGoodPath() {
         $wpSimpleTest = new WpSimpleTest($this->functionsFacade);
         $expectedShortcodeGoodPath = array('name' => 'Wp Simpletest', 'path' => '/wp-simpletest/tests', 'passes' => 'y');
-        $wpSimpleTest->setShortcode($this->shortcodeGoodPath);
+		$shortcodeGoodPath = array('name' => 'Wp Simpletest', 'path' => '/wp-simpletest/tests', 'passes' => 'y');
+        $wpSimpleTest->setShortcode($shortcodeGoodPath);
         $this->assertEqual($expectedShortcodeGoodPath, $wpSimpleTest->getShortcode());
     }
 
@@ -45,7 +42,7 @@ class UnitWpSimpleTest extends UnitTestCase {
         try {
             $this->functionsFacade->setReturnValue('checkFileExists', false);
             $wpSimpleTest = new WpSimpleTest($this->functionsFacade);
-            $wpSimpleTest->confirmTestFileExists($this->shortcodeNoPath['path']);
+            $wpSimpleTest->confirmTestFileExists('');
         }
 
         catch (Exception $e) {
@@ -56,8 +53,8 @@ class UnitWpSimpleTest extends UnitTestCase {
     public function testConfirmTestFileExistsWithBadPath() {
         try {
             $this->functionsFacade->setReturnValue('checkFileExists', false);
-            $wpSimpleTest = new WpSimpleTest($this->functionsFacade, $this->hooksFacade);
-            $wpSimpleTest->confirmTestFileExists($this->shortcodeBadPath['path']);
+            $wpSimpleTest = new WpSimpleTest($this->functionsFacade);
+            $wpSimpleTest->confirmTestFileExists('/nowhere');
         }
 
         catch (Exception $e) {
@@ -68,8 +65,8 @@ class UnitWpSimpleTest extends UnitTestCase {
     public function testConfirmTestFileExistsWithGoodPath() {
         try {
             $this->functionsFacade->setReturnValue('checkFileExists', true);
-            $wpSimpleTest = new WpSimpleTest($this->functionsFacade, $this->hooksFacade);
-            $this->assertTrue($wpSimpleTest->confirmTestFileExists($this->shortcodeGoodPath['path']));
+            $wpSimpleTest = new WpSimpleTest($this->functionsFacade);
+            $this->assertTrue($wpSimpleTest->confirmTestFileExists('/wp-simpletest/tests'));
 
         }
 
