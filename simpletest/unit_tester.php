@@ -37,6 +37,14 @@ class UnitTestCase extends SimpleTestCase {
     }
 
     /**
+     * @deprecated
+     * MTT: Added for SimpleTest for WordPress plugin
+     * so old tests don't break
+     */
+    function UnitTestCase() {
+        return null;
+    }
+    /**
      *    Called from within the test methods to register
      *    passes and failures.
      *    @param boolean $result    Pass on true.
