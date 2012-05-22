@@ -1,10 +1,7 @@
 <?php
 
-// the simpleTest class files names don't match the class names,
-// so we can't use the autoloader
-require_once('simpletest/unit_tester.php');
-require_once('simpletest/reporter.php');
-require_once('simpletest/mock_objects.php');
+require_once 'simpletest/unit_tester.php';
+require_once 'simpletest/mock_objects.php';
 
 class WpSimpleTest {
     private $version = '1.0.2';
@@ -35,9 +32,9 @@ class WpSimpleTest {
             array_walk($userShortcode, array('ToppaFunctions', 'trimCallback'));
             $this->setShortcode($userShortcode);
             $this->confirmTestFileExists($this->shortcode['path']);
-            $groupTest = new GroupTest($this->shortcode['name']);
+            $testSuite = new TestSuite($this->shortcode['name']);
             $reporter = new WpSimpleTestReporter($this->shortcode['passes']);
-            $testResults = $this->runTests($groupTest, $reporter);
+            $testResults = $this->runTests($testSuite, $reporter);
         }
 
         catch (Exception $e) {
@@ -73,10 +70,10 @@ class WpSimpleTest {
         return true;
     }
 
-    public function runTests(GroupTest $groupTest, WpSimpleTestReporter $reporter) {
+    public function runTests(TestSuite $testSuite, WpSimpleTestReporter $reporter) {
         ob_start();
-        $groupTest->addTestFile($this->fullTestFilePath);
-        $groupTest->run($reporter);
+        $testSuite->addFile($this->fullTestFilePath);
+        $testSuite->run($reporter);
         $testResults = ob_get_contents();
         ob_end_clean();
         return $testResults;

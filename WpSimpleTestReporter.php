@@ -4,7 +4,7 @@ class WpSimpleTestReporter extends HtmlReporter {
 
     function __construct($showPasses) {
         $this->showPasses = $showPasses;
-        parent::HtmlReporter('UTF-8');
+        parent::__construct('UTF-8');
     }
 
     function paintHeader($test_name) {
