@@ -54,7 +54,7 @@ The example shortcode above will work. It runs the unit tests I wrote for the pl
 * Updated WordPress test runner and HTML report to use SimpleTest 1.1.0
 * Check system requirements at admin_init (instead of plugin activation)
 * Improved included sample tests
-
+* Follow correct WordPress procedure for including stylesheet
 
 = 1.0.2 =
 * More user friendly handling of activation errors
