@@ -3,8 +3,9 @@ Contributors: toppa
 Donate link: http://www.toppa.com/simpletest-for-wordpress/
 Tags: unit test, integration test, plugin testing, testing, test, TDD, SimpleTest
 Requires at least: 3.0
-Tested up to: 3.3.2
+Tested up to: 3.4
 Stable tag: 1.1
+License: GPLv2 or later
 
 Enables unit testing and integration testing for WordPress plugins, using SimpleTest
 
@@ -12,7 +13,7 @@ Enables unit testing and integration testing for WordPress plugins, using Simple
 
 **Overview**
 
-SimpleTest for WordPress is a tool for WordPress plugin developers who want to create and run automated tests for their plugins. It includes [SimpleTest 1.0.1](http://www.simpletest.org/) and uses a shortcode to let you run unit tests on WordPress plugins, and see the results in a WordPress page. Since it runs within WordPress, you can also do integration testing of plugins (that is, custom WordPress functions used in the plugins will work correctly when the tests are run).
+SimpleTest for WordPress is a tool for WordPress plugin developers who want to create and run automated tests for their plugins. It includes [SimpleTest 1.1](http://www.simpletest.org/) and uses a shortcode to let you run unit tests on WordPress plugins, and see the results in a WordPress page. Since it runs within WordPress, you can also do integration testing of plugins (that is, custom WordPress functions used in the plugins will work correctly when the tests are run).
 
 **Installation of [Toppa Plugin Libraries for WordPress](http://wordpress.org/extend/plugins/toppa-plugin-libraries-for-wordpress/) is required for this plugin. Please download and install it first.**
 

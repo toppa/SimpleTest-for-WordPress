@@ -4,7 +4,7 @@ require_once 'simpletest/unit_tester.php';
 require_once 'simpletest/mock_objects.php';
 
 class WpSimpleTest {
-    private $version = '1.0.2';
+    private $version = '1.1';
     private $cssFileName = 'simpletest.css';
     private $functionsFacade;
     private $shortcodeDefaults = array(
