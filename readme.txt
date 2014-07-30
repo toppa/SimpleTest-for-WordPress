@@ -11,6 +11,8 @@ Enables unit testing and integration testing for WordPress plugins, using Simple
 
 == Description ==
 
+**I am currently no longer developing or supporting this plugin. I may resume development and support in the future, but I'm not sure when.**
+
 **Overview**
 
 SimpleTest for WordPress is a tool for WordPress plugin developers who want to create and run automated tests for their plugins. It includes [SimpleTest 1.1](http://www.simpletest.org/) and uses a shortcode to let you run unit tests on WordPress plugins, and see the results in a WordPress page. Since it runs within WordPress, you can also do integration testing of plugins (that is, custom WordPress functions used in the plugins will work correctly when the tests are run).
